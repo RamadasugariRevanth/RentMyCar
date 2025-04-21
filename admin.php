@@ -1,0 +1,170 @@
+<?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "login";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Retrieve data from the database
+$sql = "SELECT email, password FROM login_details";
+$result = $conn->query($sql);
+
+if ($result === false) {
+    die("Query failed: " . $conn->error);
+}
+
+// Close the connection
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+
+  <style>
+     body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:gray;
+color:white;
+font-weight:500;
+}
+
+.sidebar {
+  width: 185px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #080606;
+  color: white;
+  padding-top: 20px;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px;
+  text-align: center;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+}
+
+.sidebar a:hover {
+  background-color: #555;
+}
+
+.content {
+  margin-left: 250px;
+  padding: 20px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+      <li><a href="#" onclick="showBookings()">Bookings</a></li>
+      <li><a href="#" onclick="showUsers()">Users</a></li>
+      <li><a href="#">Exit</a></li>
+    </ul>
+  </div>
+
+  <div class="content" id="content">
+    <?php
+    // Check if there are rows in the result
+    if ($result->num_rows > 0) {
+        // Output data of each row in a table
+        echo "<table border='1'>";
+        echo "<tr><th>Email</th><th>Password</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr><td>" . $row["email"] . "</td><td>" . $row["password"] . "</td></tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "0 results";
+    }
+    ?>
+  </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+ 
+    fetchBookings();
+  
+   
+    document.querySelectorAll('.sidebar ul li a').forEach(item => {
+      item.addEventListener('click', function() {
+        const tabcontentId = this.getAttribute('href').substring(1);
+        openTab(tabcontentId);
+      });
+    });
+  });
+  
+  function openTab(tabcontentId) {
+    // Hide all tab contents
+    document.querySelectorAll('.tabcontent').forEach(item => {
+      item.style.display = 'none';
+    });
+  
+    document.getElementById(tabcontentId).style.display = 'block';
+  
+    if (tabcontentId === 'bookings') {
+      
+      fetchBookings();
+    }
+  }
+  
+  function fetchBookings() {
+    fetch('/api/bookings')
+      .then(response => response.json())
+      .then(data => {
+      
+        const tbody = document.querySelector('#bookings-table tbody');
+        tbody.innerHTML = '';
+  
+        // Populate the table with booking data
+        data.forEach(booking => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${booking.name}</td>
+            <td>${booking.phone}</td>
+            <td>${booking.email}</td>
+            <td>${booking.location}</td>
+            <td>${booking.date}</td>
+            <td>${booking.time}</td>
+            <td>${booking.car}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching bookings:', error);
+      });
+  }
+</script>  
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/23cdbbc270.js" crossorigin="anonymous"></script>
+  <title>Contact Us - Gold Jewelry</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+
+  <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #0059ff; /* Gold color */
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+nav ul li a.active {
+  font-weight: bold;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.container h2 {
+  margin-top: 0;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact-info .info {
+  text-align: center;
+}
+
+.contact-info .info img {
+  width: 50px;
+  height: 50px;
+}
+
+.contact-form {
+  margin-top: 20px;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  font-weight: bold;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-form textarea {
+  height: 100px;
+}
+
+.contact-form button {
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #ffcc00; /* Darker gold color on hover */
+}
+
+footer {
+  background-color: #ffd700;
+  padding: 20px;
+  text-align: center;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>RR Rentals</h1>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+                <li><a href="#">About</a></li>
+              
+                <li><a href="contact.html">Contact us</a></li>
+                <li><a href="loginpage.html" class="active">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section id="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Have a question or inquiry? Fill out the form below or contact us through other means.</p>
+      <div class="contact-info">
+        <div class="info">
+            <i class="fa-solid fa-location-dot" style="color: #f91010;"></i>
+          <p>123 street, City, Country</p>
+        </div>
+        <div class="info">
+            <i class="fa-solid fa-square-envelope" style="color: #f21c1c;"></i>
+          <p><a href="mailto:revanth99r@gmail.com">mail to Us</a></p>
+        </div>
+        <div class="info">
+            <i class="fa-solid fa-phone" style="color: #4000ff;"></i>
+          <p><a href="tel:+91 8310325579">contact us</a></p>
+        </div>
+      </div>
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+  
+  <footer>
+    <p>&copy; 2024 rights</p>
+  </footer>
+</body>
+</html>

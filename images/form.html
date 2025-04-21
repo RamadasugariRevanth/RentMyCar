@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="formsstyle.css">
+    <link rel="icon" href="images/bgimage2.jpeg">
+    <script src="https://kit.fontawesome.com/23cdbbc270.js" crossorigin="anonymous"></script>
+
+
+    <!-- <script>
+
+var signInButton = document.getElementById("button");
+function display(){
+      
+
+     signInButton.addEventListener("click", function() {
+   
+    window.location.href = "C:/Desktop/react-internship/home.html";
+});
+
+}
+        
+    </script> -->
+
+   
+
+    <script>
+        function display() {
+            var name=document.getElementById('email').value;
+       window.alert(name);
+            window.location.href = 'home.html';
+        }
+    </script>
+</head>
+<body>
+     
+         <form >
+              <div class="signin"><h2>Sign In</h2></div>
+
+              <div class="input">
+                  <input type="email"id="email" placeholder="Enter Your Email">
+                  <input type="password" id="password" placeholder="Enter your Password">
+                  <input type="button" id="button" value="Sign in" onclick="display()">
+                  
+              </div>
+
+              <div class="others">
+                    <p>Or Login with</p>
+
+                   <a href="https://www.facebook.com/"> <i class="fa-brands fa-facebook" style="color: #2474ff;"></i></a>
+                   <a href="https://www.google.com/"> <i class="fa-brands fa-google" style="color: #e63333;"></i></a>
+              </div>
+
+         </form>
+
+</body>
+</html>
